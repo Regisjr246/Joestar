@@ -7,7 +7,7 @@ import CadastroServico from "../components/CadastrodeServico";
 import Listagem from "../components/Listagem";
 import ListagemServico from "../components/ListagemServico";
 import ListagemProficional from "../components/ListagemProfi";
-import paginaInicial from "../Pagina Inicial/paginaInicial";
+
 
 const AppRoute = () => {
     return (
@@ -20,9 +20,24 @@ const AppRoute = () => {
                 <Route path="ListagemServico" element={<ListagemServico/>} />
                 <Route path="ListagemProficional" element={<ListagemProficional/>} />
               
+
             </Routes>
         </BrowserRouter>
     );
 
 }
 export default AppRoute;
+
+//ROTAS: CADASTROS
+// cadastro de clientes: /CadastrodeClientes
+// cadastro de proficional: /CadastrodeProfissionais
+// cadastro de servico: /CadastroServico
+
+
+//ROTAS: LISTAGENS
+// listagem de clientes: /Listagem
+// listagem de proficional: /ListagemProficional
+// listagem de servico: /ListagemServico
+
+
+

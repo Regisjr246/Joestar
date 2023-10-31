@@ -23,7 +23,7 @@ const ListagemServico = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/buscar/{nome}',
+                const response = await axios.post('http://127.0.0.1:8000/api/buscarNome',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -34,6 +34,8 @@ const ListagemServico = () => {
                 ).then(function (response) {
                     if(true == response.data.status){
                         setClientes(response.data.data)
+                    } else {
+                        setClientes([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -48,7 +50,7 @@ const ListagemServico = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarCadastroServio');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizarServico');
                 if(true == response.data.status){
                     setClientes(response.data.data)
                 }

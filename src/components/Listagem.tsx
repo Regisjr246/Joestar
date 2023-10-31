@@ -23,7 +23,7 @@ const Listagem = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente/{nome}',
+                const response = await axios.post('http://127.0.0.1:8000/api/cliente',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -34,6 +34,8 @@ const Listagem = () => {
                 ).then(function (response) {
                     if(true == response.data.status){
                         setClientes(response.data.data)
+                    } else {
+                        setClientes([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -48,7 +50,7 @@ const Listagem = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarCadastrosCliente');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizarCadastroCliente');
                 if(true == response.data.status){
                     setClientes(response.data.data)
                 }
@@ -97,19 +99,7 @@ const Listagem = () => {
                                         <th>Nome</th>
                                         <th>CPF</th>
                                         <th>E-mail</th>
-                                        <th>Data de Nascimento</th>
-                                        <th>Cidade</th>
-                                        <th>Estado</th>
-                                        <th>celular</th>
-                                        <th>pais</th>
-                                        <th>rua</th>
-                                        <th>numero</th>
-                                        <th>bairro</th>
-                                        <th>cep</th>
-                                        <th>Complemento</th>
-                                        
-                                        
-                                        
+                                        <th>celular</th>            
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -120,18 +110,8 @@ const Listagem = () => {
                                             <td>{cliente.nome}</td>
                                             <td>{cliente.email}</td>
                                             <td>{cliente.cpf}</td>
-                                            <td>{cliente.dataNascimento}</td>
-                                            <td>{cliente.cidade}</td>
-                                            <td>{cliente.estado}</td>
-                                            <td>{cliente.celular}</td>
-                                            <td>{cliente.pais}</td>
-                                            <td>{cliente.rua}</td>
-                                            <td>{cliente.numero}</td>
-                                            <td>{cliente.bairro}</td>
-                                            <td>{cliente.cep}</td>
-                                            <td>{cliente.complemento}</td>
-                                            
-                                            
+                                          
+                                            <td>{cliente.celular}</td>                                                                                                                                   
                                             <td>
                                                 <a href="#" className='btn btn-primary btn-sm'>Editar</a>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>

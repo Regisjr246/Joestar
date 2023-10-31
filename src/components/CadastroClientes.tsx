@@ -31,7 +31,7 @@ const CadastroCliente = () => {
             email: email,
             cpf: cpf,
             dataNascimento: dataNascimento,
-            localidade: localidade,
+            cidade: localidade,
             estado: estado,
             celular: celular,
             pais: pais,
@@ -74,7 +74,7 @@ const CadastroCliente = () => {
                     console.log(data);
 
                     setLocalidade(data.localidade);
-
+                    
                     // setCep(data.cep);
                     setEstado(data.uf);
 
@@ -144,21 +144,21 @@ const CadastroCliente = () => {
                 
             <nav className="navbar navbar-expand-lg navbar-light bg-info">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Estilo e Lamina</a>
+    <a className="navbar-brand" href="#"> JOESTARS BEAUTY</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <a className="nav-link active" aria-current="page" href="#">Pagina Inicial</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
+          <a className="nav-link" href="#">Serviços</a>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Localização
           </a>
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a className="dropdown-item" href="#">Action</a></li>
@@ -168,7 +168,7 @@ const CadastroCliente = () => {
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled">Disabled</a>
+          <a className="nav-link disabled">Contato</a>
         </li>
       </ul>
       
