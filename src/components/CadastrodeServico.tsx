@@ -109,11 +109,11 @@ Localização
                     name="nome"
                     className="form-control"
                     required
-                    onChange={handleState} placeholder='ex: Corte americano'
+                    onChange={handleState}
                   />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="preco" className="form-label" placeholder='ex:200.00'>
+                  <label htmlFor="preco" className="form-label" >
                     Preço
                   </label>
                   <input
@@ -125,7 +125,7 @@ Localização
                   />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="descricao" className="form-label" placeholder='ex: corte americano que usa...'>
+                  <label htmlFor="descricao" className="form-label">
                     Descricao
                   </label>
                   <input
@@ -137,7 +137,7 @@ Localização
                   />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="duracao" placeholder='ex: 30 ' className="form-label">
+                  <label htmlFor="duracao" className="form-label">
                     Duracao
                   </label>
                   <input
