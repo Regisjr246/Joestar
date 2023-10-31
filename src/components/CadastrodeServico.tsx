@@ -34,7 +34,7 @@ const CadastroServico = () => {
         },
       })
       .then(function (response) {
-        window.location.href = "/ListagemServico";
+       window.location.href = "/ListagemServico";
       })
       .catch(function (error) {
         console.log(error);
@@ -117,7 +117,7 @@ const CadastroServico = () => {
                     Preço
                   </label>
                   <input
-                    type="number"
+                    type="decimal"
                     name="preco"
                     className="form-control"
                     required
@@ -141,7 +141,7 @@ const CadastroServico = () => {
                     Duracao
                   </label>
                   <input
-                    type="time"
+                    type="number"
                     name="duracao"
                     className="form-control"
                     required
