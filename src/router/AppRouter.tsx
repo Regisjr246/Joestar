@@ -7,6 +7,7 @@ import CadastroServico from "../components/CadastrodeServico";
 import Listagem from "../components/Listagem";
 import ListagemServico from "../components/ListagemServico";
 import ListagemProficional from "../components/ListagemProfi";
+import EditarCliente from "../components/EditarCliente";
 
 
 const AppRoute = () => {
@@ -19,6 +20,7 @@ const AppRoute = () => {
                 <Route path="Listagem" element={<Listagem/>} />
                 <Route path="ListagemServico" element={<ListagemServico/>} />
                 <Route path="ListagemProficional" element={<ListagemProficional/>} />
+                <Route path="/editarCliente/:id" element={<EditarCliente/>} />
               
 
             </Routes>

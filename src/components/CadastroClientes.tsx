@@ -4,6 +4,8 @@ import styles from '../App.module.css'
 //footer
 //header
 import axios from 'axios';
+import Swal from 'sweetalert2';
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 const CadastroCliente = () => {
 
@@ -53,9 +55,20 @@ const CadastroCliente = () => {
                 }
             }
         ).then(function (response) {
+            Swal.fire({
+                title: "Cadastrado?",
+                text: "Cliente cadastrado com sucesso",
+                icon: "success"
+              });
+
             window.location.href = "/listagem"
         }).catch(function (error) {
             console.log(error)
+            Swal.fire({
+                title: "Erro no Cadastro",
+                text: "Cliente não cadastrado ",
+                icon: "error"
+              });
         });
     }
 
@@ -243,7 +256,7 @@ const CadastroCliente = () => {
                                     <input type="password" name='password' className='form-control' required onChange={handleState} placeholder='numeros, caracteres,simbolos' />
                                 </div>
                                 <div className='col-12'>
-                                    <button type='submit' className='btn btn-success btn-sm'>Cadastrar</button>
+                                    <button type='submit' className='btn btn-success btn-sm' >Cadastrar</button >
                                 </div>
                             </form>
                         </div>

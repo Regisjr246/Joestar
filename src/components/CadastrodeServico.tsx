@@ -100,16 +100,16 @@ Localização
             <div className="card-body">
               <h5 className="card-title">Cadastrar Serviços</h5>
               <form onSubmit={cadastrarServico} className="row g-3">
-                <div className="col-6">
-                  <label htmlFor="nome" className="form-label">
+                <div className="col-6" >
+                  <label htmlFor="nome" className="form-label" >
                     Nome
-                  </label>
+                  </label >
                   <input
                     type="text"
                     name="nome"
                     className="form-control"
                     required
-                    onChange={handleState}
+                    onChange={handleState} placeholder="ex: Corte Americano"
                   />
                 </div>
                 <div className="col-6">
@@ -121,7 +121,8 @@ Localização
                     name="preco"
                     className="form-control"
                     required
-                    onChange={handleState}
+                    onChange={handleState} placeholder="ex: 20.00"
+                  
                   />
                 </div>
                 <div className="col-6">
@@ -133,19 +134,19 @@ Localização
                     name="descricao"
                     className="form-control"
                     required
-                    onChange={handleState}
+                    onChange={handleState} placeholder="ex: Corte ultilizando.. "
                   />
                 </div>
                 <div className="col-6">
                   <label htmlFor="duracao" className="form-label">
-                    Duracao
+                    Duracao(minutos)
                   </label>
                   <input
                     type="number"
                     name="duracao"
                     className="form-control"
                     required
-                    onChange={handleState}
+                    onChange={handleState} placeholder="ex:30"
                   />
                 </div>
 
