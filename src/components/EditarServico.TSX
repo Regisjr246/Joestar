@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditarServicos = () => {
+const EditarServico = () => {
 
     const [nome, setNome] = useState<string>("");
     const [preco, setPreco] = useState<string>("");
@@ -30,7 +30,7 @@ const EditarServicos = () => {
 
         }
 
-        axios.put("http://127.0.0.1:8000/api/servico/update", dados,
+        axios.put("http://127.0.0.1:8000/api/updateServico", dados,
             {
                 headers: {
                     "Accept": "application/json",
@@ -49,7 +49,7 @@ const EditarServicos = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/servico/" + parametro.id);
+                const response = await axios.get("http://127.0.0.1:8000/api/pesquisarPorIdServico/" + parametro.id);
                 setNome(response.data.data.nome);
                 setPreco(response.data.data.preco);
                 setDescricao(response.data.data.descricao);
@@ -130,58 +130,49 @@ Localização
               <h5 className="card-title">Cadastrar Serviços</h5>
               <form onSubmit={atualizar} className="row g-3">
                 <div className="col-6" >
-                  <label htmlFor="nome" className="form-label" >
-                    Nome
-                  </label >
-                  <input
-                    type="text"
-                    name="nome"
-                    className="form-control"
-                    required
-                    onChange={handleState} placeholder="ex: Corte Americano"
-                  />
+                <label htmlFor="nome" className='form-label'>Nome</label>
+                                    <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="preco" className="form-label" >
-                    Preço
-                  </label>
-                  <input
-                    type="decimal"
-                    name="preco"
-                    className="form-control"
-                    required
-                    onChange={handleState} placeholder="ex: 20.00"
-                  
-                  />
+                <label htmlFor="preco" className="form-label">
+                                        Preço
+                                    </label>
+                                    <input
+                                        type="decimal"
+                                        name="preco"
+                                        className="form-control"
+                                        required
+                                        onChange={handleState} value={preco}
+                                    />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="descricao" className="form-label">
-                    Descricao
-                  </label>
-                  <input
-                    type="text"
-                    name="descricao"
-                    className="form-control"
-                    required
-                    onChange={handleState} placeholder="ex: Corte ultilizando.. "
-                  />
+                <label htmlFor="descricao" className="form-label">
+                                        Descrição
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="descricao"
+                                        className="form-control"
+                                        required
+                                        onChange={handleState} value={descricao}
+                                    />
                 </div>
                 <div className="col-6">
-                  <label htmlFor="duracao" className="form-label">
-                    Duracao(minutos)
-                  </label>
-                  <input
-                    type="number"
-                    name="duracao"
-                    className="form-control"
-                    required
-                    onChange={handleState} placeholder="ex:30"
-                  />
+                <label htmlFor="duracao" className="form-label">
+                                        Duração(minutos)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="duracao"
+                                        className="form-control"
+                                        required
+                                        onChange={handleState} value={duracao}
+                                    />
                 </div>
 
                 <div className="col-12">
                   <button type="submit" className="btn btn-success btn-sm">
-                    Cadastrar
+                    Atualizar
                   </button>
                 </div>
               </form>
@@ -196,4 +187,4 @@ Localização
 
 
 
-export default EditarServicos;
+export default EditarServico;

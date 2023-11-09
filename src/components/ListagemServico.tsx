@@ -3,11 +3,12 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import styles from "../App.module.css";
 import { CadastroInterfaceServico } from '../Interfaces/CadastroServicos';
+import { Link } from 'react-router-dom';
 
 
 const ListagemServico = () => {
 
-    const [clientes, setClientes] = useState<CadastroInterfaceServico[]>([]);
+    const [servico, setServico] = useState<CadastroInterfaceServico[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
@@ -33,9 +34,9 @@ const ListagemServico = () => {
                     }
                 ).then(function (response) {
                     if(true == response.data.status){
-                        setClientes(response.data.data)
+                        setServico(response.data.data)
                     } else {
-                        setClientes([]);
+                        setServico([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -52,7 +53,7 @@ const ListagemServico = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarServico');
                 if(true == response.data.status){
-                    setClientes(response.data.data)
+                    setServico(response.data.data)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -108,19 +109,19 @@ const ListagemServico = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {clientes.map(cliente => (
-                                        <tr key={cliente.id}>
-                                            <td>{cliente.id}</td>
-                                            <td>{cliente.nome}</td>
-                                            <td>{cliente.preco}</td>
-                                            <td>{cliente.descricao}</td>
-                                            <td>{cliente.duracao}</td>
+                                    {servico.map(servico => (
+                                        <tr key={servico.id}>
+                                            <td>{servico.id}</td>
+                                            <td>{servico.nome}</td>
+                                            <td>{servico.preco}</td>
+                                            <td>{servico.descricao}</td>
+                                            <td>{servico.duracao}</td>
                                            
                                           
                                             
                                             
                                             <td>
-                                                <a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                            <Link to={"/EditarServico/" +servico.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>
