@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from '../App.module.css'
 
-const EditarClientes = () => {
+const EditarProfissional = () => {
 
     const [nome, setNome] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -23,6 +23,7 @@ const EditarClientes = () => {
     const [cep, setCep] = useState<string>("");
     const [complemento, setComplemento] = useState<string>("");
     const [celular, setCelular] = useState<string>("");
+    const [salario, setSalario] = useState<string>("");
 
     const parametro = useParams();
 
@@ -34,7 +35,7 @@ const EditarClientes = () => {
             nome: nome,
             email: email,
             cpf: cpf,
-            dataNascimento:dataNascimento,
+            dataNascimento: dataNascimento,
             cep: cep,
             complemento: complemento,
             cidade: cidade,
@@ -43,18 +44,19 @@ const EditarClientes = () => {
             rua: rua,
             numero: numero,
             bairro: bairro,
-            celular: celular
+            celular: celular,
+            salario: salario
 
         }
 
-        axios.put("http://127.0.0.1:8000/api/updateCliente", dados,
+        axios.put("http://127.0.0.1:8000/api/updateProfissional", dados,
             {
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/Listagem";
+                window.location.href = "/ListagemProficional";
             }).catch(function (error) {
                 console.log('Ocorreu um erro ao atualizar');
             });
@@ -66,7 +68,7 @@ const EditarClientes = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/pesquisarPorIdCleinte/" + parametro.id);
+                const response = await axios.get("http://127.0.0.1:8000/api/pesquisarPorIdProficional/" + parametro.id);
                 setNome(response.data.data.nome);
                 setEmail(response.data.data.email);
                 setCpf(response.data.data.cpf);
@@ -81,6 +83,7 @@ const EditarClientes = () => {
                 setNumero(response.data.data.numero);
                 setBairro(response.data.data.bairro);
                 setCelular(response.data.data.celular);
+                setSalario(response.data.data.salario);
 
             } catch (error) {
                 console.log("Erro ao buscar dados da api");
@@ -114,7 +117,7 @@ const EditarClientes = () => {
         }
         if (e.target.name === "celular") {
             setCelular(e.target.value);
-        } 
+        }
         if (e.target.name == "cidade") {
             setCidade(e.target.value);
         }
@@ -135,6 +138,9 @@ const EditarClientes = () => {
         }
         if (e.target.name == "cep") {
             setCep(e.target.value);
+        }
+        if (e.target.name == "salario") {
+            setSalario(e.target.value);
         }
     }
     return (
@@ -180,31 +186,30 @@ const EditarClientes = () => {
                     
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar Clientes</h5>
+                            <h5 className='card-title'>Atualizar Profcional</h5>
                             <form onSubmit={atualizar} className='row g-3'>
                                 <div className='col-6'>
                                 <label htmlFor="nome" className='form-label'>Nome</label>
-                                    <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />
-                                </div>
+                                    <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />   </div>
                                 <div className='col-6'>
                                 <label htmlFor="email" className='form-label'>E-mail</label>
-                                    <input type="text" name='email' className='form-control' required onChange={handleState} value={email} />
-                                </div>
+                                    <input type="text" name='email' className='form-control' required onChange={handleState} value={email} />  </div>
                                 <div className='col-4'>
                                 <label htmlFor="cpf" className='form-label'>CPF</label>
-                                    <input type="text" name='cpf' className='form-control' required onChange={handleState} value={cpf} />                                </div>
+                                    <input type="text" name='cpf' className='form-control' required onChange={handleState} value={cpf} />        </div>
                                 <div className='col-4'>
                                 <label htmlFor="dataDeNascimento" className='form-label'>Data de nascimento</label>
-                                    <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} value={dataNascimento} />  </div>
+                                    <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} value={dataNascimento} /> </div>
 
 
                                 <div className='col-4'>
                                 <label htmlFor="cep" className='form-label'>CEP</label>
                                     <input type="text" name='cep' className='form-control' required onChange={handleState} value={cep} />
+
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="estado" className='form-label'>Estado</label>
-                                    <input type="text" name='estado' className='form-control' required onChange={handleState}value={estado}  />
+                                    <input type="text" name='estado' className='form-control' required onChange={handleState} value={estado} />
                                 </div>
 
                                 <div className='col-4'>
@@ -213,15 +218,14 @@ const EditarClientes = () => {
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Celular</label>
-                                    <input type="text" name='celular' className='form-control' required onChange={handleState}value={celular}  />
-                                </div>
+                                    <input type="text" name='celular' className='form-control' required onChange={handleState} value={celular} />  </div>
                                 <div className='col-4'>
                                 <label htmlFor="pais" className='form-label'>País</label>
-                                    <input type="text" name='pais' className='form-control' required onChange={handleState}value={pais}  />
+                                    <input type="text" name='pais' className='form-control' required onChange={handleState} value={pais} />
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="rua" className='form-label'>Rua</label>
-                                    <input type="text" name='rua' className='form-control' required onChange={handleState}value={rua} />
+                                    <input type="text" name='rua' className='form-control' required onChange={handleState} value={rua} />
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="numero" className='form-label'>Numero</label>
@@ -234,9 +238,15 @@ const EditarClientes = () => {
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="complemento" className='form-label'>Complemento</label>
-                                    <input type="text" name='complemento' className='form-control' required onChange={handleState}value={complemento} />
-
+                                    <input type="text" name='complemento' className='form-control' required onChange={handleState} value={complemento} />
                                 </div>
+
+
+                                <div className='col-4'>
+                                <label htmlFor="salario" className='form-label'>salario</label>
+                                    <input type="decimal" name='salario' className='form-control' required onChange={handleState} value={salario}/>
+                            </div>
+
                               
                                 <div className='col-12'>
                                 <button type='submit' className='btn btn-dark btn-sm'>Atualizar</button>
@@ -252,4 +262,4 @@ const EditarClientes = () => {
 }
 
 
-export default EditarClientes;
+export default EditarProfissional;

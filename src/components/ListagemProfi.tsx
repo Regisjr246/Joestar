@@ -3,11 +3,12 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 
 import styles from "../App.module.css";
 import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
+import { Link } from 'react-router-dom';
 
 
 const ListagemProficional = () => {
 
-    const [clientes, setClientes] = useState<CadastroInterfaceProficional[]>([]);
+    const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
@@ -33,9 +34,9 @@ const ListagemProficional = () => {
                     }
                 ).then(function (response) {
                     if(true == response.data.status){
-                        setClientes(response.data.data)
+                        setProfissional(response.data.data)
                     } else {
-                        setClientes([]);
+                        setProfissional([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -52,7 +53,7 @@ const ListagemProficional = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/vizualizarProfi');
                 if(true == response.data.status){
-                    setClientes(response.data.data)
+                    setProfissional(response.data.data)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -111,21 +112,21 @@ const ListagemProficional = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {clientes.map(cliente => (
-                                        <tr key={cliente.id}>
-                                            <td>{cliente.id}</td>
-                                            <td>{cliente.nome}</td>
-                                            <td>{cliente.email}</td>
-                                            <td>{cliente.cpf}</td>
+                                    {profissional.map(profissional => (
+                                        <tr key={profissional.id}>
+                                            <td>{profissional.id}</td>
+                                            <td>{profissional.nome}</td>
+                                            <td>{profissional.email}</td>
+                                            <td>{profissional.cpf}</td>
                                          
                                            
-                                            <td>{cliente.celular}</td>
+                                            <td>{profissional.celular}</td>
                                            
-                                            <td>{cliente.salario}</td>
+                                            <td>{profissional.salario}</td>
                                             
                                             
                                             <td>
-                                                <a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                            <Link to={"/EditarProfissional/" + profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>
