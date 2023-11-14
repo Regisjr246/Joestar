@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterface } from '../Interfaces/CadastroClienteInterface';
 
@@ -13,18 +13,59 @@ const Listagem = () => {
     const [error, setError] = useState("");
 
 
+
+
+    function handleDelete(id: number) {
+        const confirm = window.confirm('Você tem certeza que deseja excluir?');
+        if (confirm)
+            axios.delete('http://127.0.0.1:8000/api/excluir/' + id)
+        
+        .then(function(response){
+           
+            window.location.href = " /Listagem"
+        }).catch(function(error){
+            console.log('Ocorreu um erro ao excluir');
+            console.log(error)
+            Swal.fire({
+                title: "Erro na exclusão",
+                text: "Cliente não foi excluido ",
+                icon: "error"
+              });
+        })
+    }
+
+    
         const handleState = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
         }
     }
 
-    const buscar = (e: FormEvent) => {
+//DELETANDO 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//BuSCAR POR NOME
+    const buscarNome = (e: FormEvent) => {
         e.preventDefault();
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente',
+                const response = await axios.post('http://127.0.0.1:8000/api/buscarNomecliente',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -76,17 +117,26 @@ const Listagem = () => {
                                 <h5 className='card-title'>
                                     Pesquisar
                                 </h5>
-                                <form onSubmit={buscar} className='row'>
+                                <form onSubmit={buscarNome}    className='row'>
                                     <div className='col-10'>
                                         <input type="text" name='pesquisa' className='form-control'
                                             onChange={handleState} />
-
                                     </div>
+
+                                    
+
+                                    
                                     <div className='col-1'>
                                         <button type='submit' className='btn btn-success'>Pesquisar</button>
+                                        
                                     </div>
 
                                 </form>
+
+
+
+
+                                
                             </div>
                         </div>
                     </div>
@@ -115,7 +165,7 @@ const Listagem = () => {
                                             <td>{cliente.celular}</td>                                                                                                                                   
                                             <td>
                                                 <Link to={"/editarCliente/" + cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                                <a onClick={e => handleDelete(cliente.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
                                     ))}

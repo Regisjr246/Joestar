@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-
+import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterfaceServico } from '../Interfaces/CadastroServicos';
 import { Link } from 'react-router-dom';
@@ -13,11 +13,49 @@ const ListagemServico = () => {
     const [error, setError] = useState("");
 
 
+
+
+
+
+
+
+//deletando
+
+function handleDelete(id: number) {
+    const confirm = window.confirm('Você tem certeza que deseja excluir?');
+    if (confirm)
+        axios.delete('http://127.0.0.1:8000/api/delete/' + id)
+    
+    .then(function(response){
+       
+        window.location.href = " /ListagemServico"
+    }).catch(function(error){
+        console.log('Ocorreu um erro ao excluir');
+        console.log(error)
+        Swal.fire({
+            title: "Erro na exclusão",
+            text: "Cliente não foi excluido ",
+            icon: "error"
+          });
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
         const handleState = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
         }
     }
+
 
     const buscar = (e: FormEvent) => {
         e.preventDefault();
@@ -87,6 +125,7 @@ const ListagemServico = () => {
                                     </div>
 
                                 </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -122,7 +161,7 @@ const ListagemServico = () => {
                                             
                                             <td>
                                             <Link to={"/EditarServico/" +servico.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                            <a onClick={e => handleDelete(servico.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
                                     ))}

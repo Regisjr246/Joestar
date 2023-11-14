@@ -55,11 +55,13 @@ const CadastroCliente = () => {
                 }
             }
         ).then(function (response) {
-            Swal.fire({
-                title: "Cadastrado?",
-                text: "Cliente cadastrado com sucesso",
-                icon: "success"
-              });
+            
+            alert('cadastro realizado com sucesso')
+         //   Swal.fire({
+           //     title: "Cadastrado?",
+             //   text: "Cliente cadastrado com sucesso",
+             //   icon: "success"
+             // });
 
             window.location.href = "/listagem"
         }).catch(function (error) {
@@ -71,6 +73,14 @@ const CadastroCliente = () => {
               });
         });
     }
+
+
+
+
+
+
+
+
 
 
     const findCep = (e: FormEvent) => {
@@ -88,7 +98,8 @@ const CadastroCliente = () => {
 
                     setLocalidade(data.localidade);
                     
-                    // setCep(data.cep);
+                    //setPais(data.pais);
+
                     setEstado(data.uf);
 
 
@@ -233,7 +244,7 @@ const CadastroCliente = () => {
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="celular" className='form-label'>Pais</label>
-                                    <input type="text" name='pais' className='form-control' required onChange={handleState} placeholder='ex: Brasil' />
+                                    <input type="text" value={pais} name='pais'  id='pais' className='form-control'  required onChange={handleState} placeholder='ex: Brasil' />
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="rua" className='form-label'>Rua</label>

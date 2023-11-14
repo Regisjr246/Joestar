@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-
+import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
 import { Link } from 'react-router-dom';
@@ -19,6 +19,34 @@ const ListagemProficional = () => {
         }
     }
 
+//deletando
+
+function handleDelete(id: number) {
+    const confirm = window.confirm('Você tem certeza que deseja excluir?');
+    if (confirm)
+        axios.delete('http://127.0.0.1:8000/api/deletarProficional/' + id)
+    
+    .then(function(response){
+       
+        window.location.href = " /ListagemProficional"
+    }).catch(function(error){
+        console.log('Ocorreu um erro ao excluir');
+        console.log(error)
+        Swal.fire({
+            title: "Erro na exclusão",
+            text: "Cliente não foi excluido ",
+            icon: "error"
+          });
+    })
+}
+
+
+
+
+
+
+
+    //Buscar por nome
     const buscar = (e: FormEvent) => {
         e.preventDefault();
 
@@ -127,7 +155,7 @@ const ListagemProficional = () => {
                                             
                                             <td>
                                             <Link to={"/EditarProfissional/" + profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                            <a onClick={e => handleDelete(profissional.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
                                     ))}

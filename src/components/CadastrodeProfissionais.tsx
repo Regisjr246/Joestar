@@ -75,7 +75,7 @@ const CadastroProficional = () => {
             headers:
                 { "Accept": "application/json", "Content-Type": "application/json" }
         }).then(function (response) {
-           window.location.href = "/ListagemProficional"
+           window.location.href = "ListagemProficional"
         }).catch(function (error) {
             console.log(error);
         });
