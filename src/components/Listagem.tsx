@@ -78,9 +78,10 @@ const Listagem = () => {
                         setClientes(response.data.data)
                     } else {
                         setClientes([]);
+                    
                     }
                 }).catch(function (error) {
-                    console.log(error)
+                    
                 });
 
             } catch (error) {

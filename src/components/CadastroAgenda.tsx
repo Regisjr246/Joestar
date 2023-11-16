@@ -7,13 +7,14 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Header from './Header';
 import Footer from './Footer';
+import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 const CadastroCliente = () => {
 
     const [proficional_id, setPrficional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
-    
+    const [proficional, setProficional] = useState<CadastroInterfaceProficional[]>([]);
 
     const cadastrarAgenda = (e: FormEvent) => {
         e.preventDefault();
@@ -43,7 +44,7 @@ console.log(dados)
              //   icon: "success"
              // });
 
-            window.location.href = "/listagem"
+            window.location.href = "/ListagemAgenda"
         }).catch(function (error) {
             console.log(error)
             Swal.fire({
@@ -58,6 +59,37 @@ console.log(dados)
 
 
 
+
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizarAgenda');
+                if(true == response.data.status){
+                    setProficional(response.data.data)
+                    console.log(proficional);
+                }
+            } catch (error) {
+                console.log(error);
+                Swal.fire({
+                    title: "Ocorreu um erro",
+                    text: "XXXXXXXXXXXXXXXX ",
+                    icon: "error"
+                  });
+            }
+        }
+
+        fetchData();
+    }, []);
+
+
+
+
+
+
+
+
+    
 
 
 
@@ -87,7 +119,9 @@ console.log(dados)
                             <form onSubmit={cadastrarAgenda} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Profcional_Id</label>
-                                    <input type="number" name='proficional_id' className='form-control' required onChange={handleState} placeholder='ex: 1' />
+                                    <select name="select"   className='form-control' required    >
+                                      <option value="valor1"></option>
+</select>
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="email" className='form-label' >Data e hora</label>

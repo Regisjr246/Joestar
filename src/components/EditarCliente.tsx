@@ -1,5 +1,5 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from "react";
-
+import Swal from 'sweetalert2';
 import style from '../template.module.css'
 import Header from "./Header";
 import Footer from "./Footer";
@@ -56,7 +56,12 @@ const EditarClientes = () => {
             }).then(function (response) {
                 window.location.href = "/Listagem";
             }).catch(function (error) {
-                console.log('Ocorreu um erro ao atualizar');
+                console.log(error)
+            Swal.fire({
+                title: "Erro ",
+                text: "Cliente não atualizado ",
+                icon: "error"
+              });
             });
 
 
