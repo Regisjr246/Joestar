@@ -5,13 +5,14 @@ import CadastroClientes from "../components/CadastroClientes";
 import CadastroProficional   from "../components/CadastrodeProfissionais";
 import CadastroServico from "../components/CadastrodeServico";
 import Listagem from "../components/Listagem";
+import ListagemAgenda from "../components/ListagemAgenda";
 import ListagemServico from "../components/ListagemServico";
 import ListagemProficional from "../components/ListagemProfi";
 import EditarCliente from "../components/EditarCliente";
 
 import EditarServico from "../components/EditarServico";
 
-
+import CadastroAgenda   from "../components/CadastroAgenda";
 import EditarProfissional from "../components/EditarProficional";
 
 const AppRoute = () => {
@@ -21,8 +22,10 @@ const AppRoute = () => {
                 <Route path="CadastroDeClientes" element={<CadastroClientes />} />
                 <Route path="CadastroDeProfissionais" element={<CadastroProficional/>} />
                 <Route path="CadastroServico" element={<CadastroServico/>} />
+                <Route path="CadastroAgenda" element={<CadastroAgenda/>} />
                 <Route path="Listagem" element={<Listagem/>} />
-                <Route path="ListagemServico" element={<ListagemServico/>} />
+                <Route path="ListagemServico" element={<ListagemServico/>} />4
+                <Route path="ListagemAgenda" element={<ListagemAgenda/>} />
                 <Route path="ListagemProficional" element={<ListagemProficional/>} />
                 <Route path="/editarCliente/:id" element={<EditarCliente/>} />
                 <Route path="/editarProfissional/:id" element={<EditarProfissional/>} />
