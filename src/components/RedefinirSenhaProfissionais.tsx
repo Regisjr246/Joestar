@@ -24,7 +24,7 @@ const RedefinirSenhaProfissionais = () => {
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/ListagemDeProfissional";
+                window.location.href = "/ListagemProficional";
             }).catch(function (error) {
                 console.log('Ocorreu um erro ao atualizar sua senha');
             });

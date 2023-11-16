@@ -151,8 +151,9 @@ const Listagem = () => {
                                     <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
-                                        <th>CPF</th>
+                                       
                                         <th>E-mail</th>
+                                        <th>CPF</th>
                                         <th>celular</th>            
                                         <th>Ações</th>
                                     </tr>
@@ -164,11 +165,13 @@ const Listagem = () => {
                                             <td>{cliente.nome}</td>
                                             <td>{cliente.email}</td>
                                             <td>{cliente.cpf}</td>
+                                            
                                           
                                             <td>{cliente.celular}</td>                                                                                                                                   
                                             <td>
                                                 <Link to={"/editarCliente/" + cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a onClick={e => handleDelete(cliente.id)} className='btn btn-danger btn-sm' >Excluir</a>
+                                                <Link to={"/RedefinirSenhaClientes/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
                                             </td>
                                         </tr>
                                     ))}

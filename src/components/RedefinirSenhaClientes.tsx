@@ -24,7 +24,7 @@ const RedefinirSenhaClientes = () => {
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/ListagemDeClientes";
+                window.location.href = "/listagem";
             }).catch(function (error) {
                 console.log('Ocorreu um erro ao atualizar sua senha');
             });

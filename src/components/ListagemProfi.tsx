@@ -126,8 +126,9 @@ function handleDelete(id: number) {
                                     <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
-                                        <th>CPF</th>
+                                     
                                         <th>E-mail</th>
+                                        <th>CPF</th>
                                      
                                        
                                         <th>celular</th>
@@ -146,17 +147,16 @@ function handleDelete(id: number) {
                                             <td>{profissional.nome}</td>
                                             <td>{profissional.email}</td>
                                             <td>{profissional.cpf}</td>
-                                         
-                                           
-                                            <td>{profissional.celular}</td>
-                                           
+                                            <td>{profissional.celular}</td>                                           
                                             <td>{profissional.salario}</td>
                                             
                                             
                                             <td>
                                             <Link to={"/EditarProfissional/" + profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
                                             <a onClick={e => handleDelete(profissional.id)} className='btn btn-danger btn-sm' >Excluir</a>
+                                            <Link to={"/RedefinirSenhaProfissionais/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
                                             </td>
+                                            
                                         </tr>
                                     ))}
                                 </tbody>
