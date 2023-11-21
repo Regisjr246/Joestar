@@ -46,7 +46,7 @@ const CadastroAgenda = () => {
             alert('cadastro Agenda realizado com sucesso')
 
 
-            // window.location.href = "/ListagemAgenda"
+             window.location.href = "/ListagemAgenda"
         }).catch(function (error) {
             console.log(error)
             Swal.fire({
