@@ -135,6 +135,8 @@ function handleDelete(id: number) {
                                     {agenda.map(agenda => (
                                         <tr key={agenda.id}>
                                             <td>{agenda.proficonal_id}</td>
+                                     
+                                            <td>{agenda.dataHora}</td>
                                             
                                          
                                          

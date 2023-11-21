@@ -1,6 +1,6 @@
 export interface CadastroInterfaceAgenda{
     id:number;
-    dataHora:Date;
+    dataHora: string;
         proficonal_id:string;
 
     }
