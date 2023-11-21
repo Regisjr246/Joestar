@@ -6,7 +6,7 @@ import { CadastroInterfaceAgenda } from '../Interfaces/CadastroInterfaceAgenda';
 import { Link } from 'react-router-dom';
 
 
-const ListagemProficional = () => {
+const ListagemAgenda = () => {
 
     const [agenda, setAgenda] = useState<CadastroInterfaceAgenda[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
@@ -82,6 +82,7 @@ function handleDelete(id: number) {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarAgenda');
                 if(true == response.data.status){
                     setAgenda(response.data.data)
+                    console.log(agenda)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -120,13 +121,13 @@ function handleDelete(id: number) {
                     </div>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'> Listagem de Proficional</h5>
+                            <h5 className='card-title'> Listagem de Profissional</h5>
                             <table className='table table-hover'>
                                 <thead>
                                     <tr>
-                                        <th>Proficional ID</th>
+                                        <th>Profissional ID</th>
                                         <th>Data e hora</th>
-                                        
+                                        <th>Ações</th>
                                        
                                        
                                     </tr>
@@ -134,9 +135,10 @@ function handleDelete(id: number) {
                                 <tbody>
                                     {agenda.map(agenda => (
                                         <tr key={agenda.id}>
-                                            <td>{agenda.proficonal_id}</td>
+                                            <td>{agenda.profissional_id}</td>
                                      
                                             <td>{agenda.dataHora}</td>
+                                            
                                             
                                          
                                          
@@ -145,7 +147,7 @@ function handleDelete(id: number) {
                                             
                                             
                                             <td>
-                                            <Link to={"/EditarProfissional/" + agenda.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                            <Link to={"/EditarProfissional/" + agenda.id} className='btn btn-primary btn-sm m-1'>Editar</Link>
                                             <a onClick={e => handleDelete(agenda.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
@@ -160,4 +162,4 @@ function handleDelete(id: number) {
         </div>
     );
 }
-export default ListagemProficional;
+export default ListagemAgenda;

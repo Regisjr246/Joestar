@@ -153,7 +153,7 @@ function handleDelete(id: number) {
                                             
                                             <td>
                                             <Link to={"/EditarProfissional/" + profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                            <a onClick={e => handleDelete(profissional.id)} className='btn btn-danger btn-sm' >Excluir</a>
+                                            <a onClick={e => handleDelete(profissional.id)} className='btn  m-1 btn-danger btn-sm' >Excluir</a>
                                             <Link to={"/RedefinirSenhaProfissionais/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
                                             </td>
                                             

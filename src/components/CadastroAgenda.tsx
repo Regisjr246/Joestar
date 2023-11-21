@@ -17,9 +17,9 @@ import { Interface } from 'readline';
 
 const CadastroAgenda = () => {
 
-    const [proficional_id, setPrficional_id] = useState<string>("");
+    const [profissional_id, setPrficional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
-    const [proficional, setProficional] = useState<CadastroInterfaceProficional[]>([]);
+    const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
 
 
     const cadastrarAgenda = (e: FormEvent) => {
@@ -27,7 +27,7 @@ const CadastroAgenda = () => {
 
 
         const dados = {
-            profissional_id: proficional_id,
+            profissional_id: profissional_id,
             dataHora: dataHora,
 
 
@@ -62,8 +62,8 @@ const CadastroAgenda = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/vizualizarProfi');
                 if (true == response.data.status) {
-                    setProficional(response.data.data)
-                    console.log(proficional);
+                    setProfissional(response.data.data)
+                    console.log(profissional);
                 }
             } catch (error) {
                 console.log(error);
@@ -102,9 +102,9 @@ const CadastroAgenda = () => {
                                     <label htmlFor="nome" className='form-label'>Profcional_Id</label>
                                     <select name='profissional_id' id='profissional_id ' className='form-control' required onChange={handleProfissionalSelect}   >
                                         <option value="0">Selecione um Profissional</option>
-                                        {proficional.map(proficional => (
-                                            <option key={proficional.id} value={proficional.id}>
-                                                {proficional.nome}
+                                        {profissional.map(profissional => (
+                                            <option key={profissional.id} value={profissional.id}>
+                                                {profissional.nome}
                                             </option>
                                         ))}
                                     </select>

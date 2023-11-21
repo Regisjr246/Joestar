@@ -161,7 +161,7 @@ function handleDelete(id: number) {
                                             
                                             <td>
                                             <Link to={"/EditarServico/" +servico.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                            <a onClick={e => handleDelete(servico.id)} className='btn btn-danger btn-sm' >Excluir</a>
+                                            <a onClick={e => handleDelete(servico.id)} className='btn btn-danger btn-sm m-1' >Excluir</a>
                                             </td>
                                         </tr>
                                     ))}
