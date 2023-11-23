@@ -7,6 +7,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from '../App.module.css'
 
+
+
+
+
+
+
+
+
 const EditarProfissional = () => {
 
     const [nome, setNome] = useState<string>("");

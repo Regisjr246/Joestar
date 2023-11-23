@@ -9,12 +9,13 @@ import ListagemAgenda from "../components/ListagemAgenda";
 import ListagemServico from "../components/ListagemServico";
 import ListagemProficional from "../components/ListagemProfi";
 import EditarCliente from "../components/EditarCliente";
-
+import Editar from "../components/EditarCliente";
 import EditarServico from "../components/EditarServico";
 import RedefinirSenhaProfissionais from "../components/RedefinirSenhaProfissionais";
 import RedefinirSenhaClientes from "../components/RedefinirSenhaClientes";
 import CadastroAgenda   from "../components/CadastroAgenda";
 import EditarProfissional from "../components/EditarProficional";
+import EditarAgenda from "../components/EditarAgenda";
 
 const AppRoute = () => {
     return (
@@ -30,6 +31,7 @@ const AppRoute = () => {
                 <Route path="ListagemProficional" element={<ListagemProficional/>} />
                 <Route path="/editarCliente/:id" element={<EditarCliente/>} />
                 <Route path="/editarProfissional/:id" element={<EditarProfissional/>} />
+                <Route path="/EditarAgenda/:id" element={<EditarAgenda/>} />
                 <Route path="/editarServico/:id" element={<EditarServico/>} />
                 <Route path="/redefinirSenhaClientes" element={<RedefinirSenhaClientes/>} />
                 <Route path="/redefinirSenhaProfissionais" element={<RedefinirSenhaProfissionais/>} />

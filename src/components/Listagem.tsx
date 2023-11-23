@@ -86,6 +86,7 @@ const Listagem = () => {
 
             } catch (error) {
                 console.log(error);
+                
             }
         }
         fetchData();
@@ -170,7 +171,7 @@ const Listagem = () => {
                                             <td>{cliente.celular}</td>                                                                                                                                   
                                             <td>
                                                 <Link to={"/editarCliente/" + cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a onClick={e => handleDelete(cliente.id)} className='btn btn-danger btn-sm' >Excluir</a>
+                                                <a onClick={e => handleDelete(cliente.id)} className='btn btn-danger btn-sm m-1'  m-2>Excluir</a>
                                                 <Link to={"/RedefinirSenhaClientes/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
                                             </td>
                                         </tr>

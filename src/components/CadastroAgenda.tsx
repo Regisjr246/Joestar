@@ -60,18 +60,14 @@ const CadastroAgenda = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/vizualizarProfi');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizarProfissional');
                 if (true == response.data.status) {
                     setProfissional(response.data.data)
                     console.log(profissional);
                 }
             } catch (error) {
                 console.log(error);
-                Swal.fire({
-                    title: "Ocorreu um erro",
-                    text: "XXXXXXXXXXXXXXXX ",
-                    icon: "error"
-                });
+              
             }
         }
 

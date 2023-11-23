@@ -24,7 +24,7 @@ const ListagemAgenda = () => {
 function handleDelete(id: number) {
     const confirm = window.confirm('Você tem certeza que deseja excluir?');
     if (confirm)
-        axios.delete('http://127.0.0.1:8000/api/deleteAgendamento/' + id)
+        axios.delete('http://127.0.0.1:8000/api/deleteAgenda/' + id)
     
     .then(function(response){
        
@@ -52,7 +52,7 @@ function handleDelete(id: number) {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/pesquisarPorProfissional',
+                const response = await axios.post('http://127.0.0.1:8000/api/buscarPorData',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -147,7 +147,7 @@ function handleDelete(id: number) {
                                             
                                             
                                             <td>
-                                            <Link to={"/EditarProfissional/" + agenda.id} className='btn btn-primary btn-sm m-1'>Editar</Link>
+                                            <Link to={"/EditarAgenda/" + agenda.id} className='btn btn-primary btn-sm m-1'>Editar</Link>
                                             <a onClick={e => handleDelete(agenda.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
