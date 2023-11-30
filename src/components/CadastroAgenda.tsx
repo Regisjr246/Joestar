@@ -22,6 +22,21 @@ const CadastroAgenda = () => {
     const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
 
 
+
+
+
+    const [profissional_idErro, setprofissional_idErro] = useState<string>("")
+    const [dataHoraErro, setdataHora] = useState<string>("")
+    const [profissioanlErro, setProfissioanlErro] = useState<string>("")
+   
+
+
+
+
+
+
+    
+
     const cadastrarAgenda = (e: FormEvent) => {
         e.preventDefault();
 
@@ -43,6 +58,12 @@ const CadastroAgenda = () => {
             }
         ).then(function (response) {
 
+
+
+
+
+
+            
             alert('cadastro Agenda realizado com sucesso')
 
 
