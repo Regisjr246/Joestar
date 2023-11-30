@@ -10,13 +10,25 @@ import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissional
 
 const EditarAgenda = () => {
 
+    
+
+
     const [profissional_id, setProfissional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
     const [id, setId] = useState<number>();
+ 
+    const [profissional_idErro, setProfissional_idErro] = useState<string>("");
+    const [dataHoraErro, setDataHoraErro] = useState<string>("");
+    const [idErro, setIdErro] = useState<number>();
+
+
 
     const parametro = useParams();
     const atualizarAgenda = (e: FormEvent) => {
         e.preventDefault();
+
+
+        
 
         const dados = {
             id: id,

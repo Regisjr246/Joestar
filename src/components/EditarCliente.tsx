@@ -24,9 +24,51 @@ const EditarClientes = () => {
     const [complemento, setComplemento] = useState<string>("");
     const [celular, setCelular] = useState<string>("");
 
+
+
+
+
+    const [nomeErro, setNomeErro] = useState<string>("");
+    const [celularErro, setCelularErro] = useState<string>("");
+    const [emailErro, setEmailErro] = useState<string>("");
+    const [cpfErro, setCpfErro] = useState<string>("");
+    const [dataNascimentoErro, setDataNascimentoErro] = useState<string>("");
+    const [localidadeErro, setLocalidadeErro] = useState<string>("");
+    const [estadoErro, setEstadoErro] = useState<string>("");
+    const [paisErro, setPaisErro] = useState<string>("");
+    const [ruaErro, setRuaErro] = useState<string>("");
+    const [numeroErro, setNumeroErro] = useState<string>("");
+    const [bairroErro, setBairroErro] = useState<string>("");
+    const [cepErro, setCepErro] = useState<string>("");
+    const [complementoErro, setComplementoErro] = useState<string>("");
+
+
+
+
+
+
+
+
+
     const parametro = useParams();
 
     const atualizar = (e: FormEvent) => {
+
+
+        setNomeErro("")
+        setCelularErro("")
+        setEmailErro("")
+        setCpfErro("")
+        setDataNascimentoErro("")
+        setLocalidadeErro("")
+        setEstadoErro("")
+        setPaisErro("")
+        setRuaErro("")
+        setNumeroErro("")
+        setBairroErro("")
+        setCepErro("")
+        setComplementoErro("")
+
         e.preventDefault();
 
         const dados = {
@@ -54,7 +96,88 @@ const EditarClientes = () => {
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/Listagem";
+
+
+
+                if (response.data.success == false) {
+
+
+                    // nome
+                    if ('nome' in response.data.error) {
+                        setNomeErro(response.data.error.nome[0])
+                    }
+    
+    
+                    //email
+                    if ('email' in response.data.error) {
+                        setEmailErro(response.data.error.email[0])
+                    }
+    
+                    
+    
+                    //cpf
+                    if ('cpf' in response.data.error) {
+                        setCpfErro(response.data.error.cpf[0])
+                    }
+    
+                    //BAIRRO
+                    if ('bairro' in response.data.error) {
+                        setBairroErro(response.data.error.bairro[0])
+                    }
+    
+    
+                    //NUEMRO
+                    if ('numero' in response.data.error) {
+                        setNumeroErro(response.data.error.numero[0])
+                    }
+    
+                    //CIDADE
+                    if ('cidade' in response.data.error) {
+                        setLocalidadeErro(response.data.error.cidade[0])
+                    }
+    
+                    //ESTADO
+                    if ('estado' in response.data.error) {
+                        setEstadoErro(response.data.error.estado[0])
+                    }
+    
+    
+                    //celular
+                    if ('celular' in response.data.error) {
+                        setCelularErro(response.data.error.celular[0])
+                    }
+    
+    
+                    //pais
+                    if ('pais' in response.data.error) {
+                        setPaisErro(response.data.error.pais[0])
+                    }
+    
+                    //complemento
+                    if ('complemento' in response.data.error) {
+                        setComplementoErro(response.data.error.complemento[0])
+                    }
+    
+                    //CEP
+                    if ('cep' in response.data.error) {
+                        setCepErro(response.data.error.cep[0])
+                    }
+    
+                       //rua
+                    if ('rua' in response.data.error) {
+                        setRuaErro(response.data.error.rua[0])
+                    }
+    
+    
+    //dataNasicmento
+                    if ('dataNasciemnto' in response.data.error) {
+                        setDataNascimentoErro(response.data.error.dataNasciemento[0])
+                    }
+    
+    
+                } else {
+
+                window.location.href = "/Listagem";}
             }).catch(function (error) {
                 console.log(error)
             Swal.fire({
@@ -190,57 +313,93 @@ const EditarClientes = () => {
                                 <div className='col-6'>
                                 <label htmlFor="nome" className='form-label'>Nome</label>
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />
+                                    <div
+                                        className='text-danger'>{nomeErro}
+                                    </div>
                                 </div>
                                 <div className='col-6'>
                                 <label htmlFor="email" className='form-label'>E-mail</label>
                                     <input type="text" name='email' className='form-control' required onChange={handleState} value={email} />
+                                    <div
+                                        className='text-danger'>{emailErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="cpf" className='form-label'>CPF</label>
-                                    <input type="text" name='cpf' className='form-control' required onChange={handleState} value={cpf} />                                </div>
+                                    <input type="text" name='cpf' className='form-control' required onChange={handleState} value={cpf} />      <div
+                                        className='text-danger'>{cpfErro}
+                                    </div>                             </div>
+                              
                                 <div className='col-4'>
                                 <label htmlFor="dataDeNascimento" className='form-label'>Data de nascimento</label>
-                                    <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} value={dataNascimento} />  </div>
+                                    <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} value={dataNascimento} /> <div
+                                        className='text-danger'>{dataNascimentoErro}
+                                    </div>  </div>
 
 
                                 <div className='col-4'>
                                 <label htmlFor="cep" className='form-label'>CEP</label>
                                     <input type="text" name='cep' className='form-control' required onChange={handleState} value={cep} />
+                                    <div
+                                        className='text-danger'>{cepErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="estado" className='form-label'>Estado</label>
                                     <input type="text" name='estado' className='form-control' required onChange={handleState}value={estado}  />
+                                    <div
+                                        className='text-danger'>{estadoErro}
+                                    </div>
                                 </div>
 
                                 <div className='col-4'>
                                 <label htmlFor="cidade" className='form-label'>Cidade</label>
                                     <input type="text" name='cidade' className='form-control' required onChange={handleState} value={cidade} />
+                                    <div
+                                        className='text-danger'>{localidadeErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Celular</label>
                                     <input type="text" name='celular' className='form-control' required onChange={handleState}value={celular}  />
+                                    <div
+                                        className='text-danger'>{celularErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="pais" className='form-label'>País</label>
                                     <input type="text" name='pais' className='form-control' required onChange={handleState}value={pais}  />
+                                    <div
+                                        className='text-danger'>{paisErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="rua" className='form-label'>Rua</label>
                                     <input type="text" name='rua' className='form-control' required onChange={handleState}value={rua} />
+                                    <div
+                                        className='text-danger'>{ruaErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="numero" className='form-label'>Numero</label>
                                     <input type="text" name='numero' className='form-control' required onChange={handleState} value={numero} />
+                                    <div
+                                        className='text-danger'>{numeroErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="bairro" className='form-label'>Bairro</label>
                                     <input type="text" name='bairro' className='form-control' required onChange={handleState} value={bairro} />
-
+                                    <div
+                                        className='text-danger'>{bairroErro}
+                                    </div>
                                 </div>
                                 <div className='col-4'>
                                 <label htmlFor="complemento" className='form-label'>Complemento</label>
                                     <input type="text" name='complemento' className='form-control' required onChange={handleState}value={complemento} />
-
+                                    <div
+                                        className='text-danger'>{complementoErro}
+                                    </div>
                                 </div>
                               
                                 <div className='col-12'>

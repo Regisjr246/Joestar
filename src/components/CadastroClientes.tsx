@@ -169,7 +169,7 @@ const CadastroCliente = () => {
                 }
 
 
-//rua
+//dataNasicmento
                 if ('dataNasciemnto' in response.data.error) {
                     setDataNascimentoErro(response.data.error.dataNasciemento[0])
                 }
@@ -203,15 +203,6 @@ const CadastroCliente = () => {
 
 
     const findCep = (e: FormEvent) => {
-
-
-
-
-
-
-
-
-
         e.preventDefault();
 
         fetch('https://viacep.com.br/ws/' + cep + '/json/',
@@ -224,7 +215,7 @@ const CadastroCliente = () => {
                     console.log(data);
 
                     setLocalidade(data.localidade);
-
+            
                     //setPais(data.pais);
 
                     setEstado(data.uf);

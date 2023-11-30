@@ -10,6 +10,7 @@ import Footer from './Footer';
 import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
 import { Interface } from 'readline';
 
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 

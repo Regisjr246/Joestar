@@ -15,10 +15,18 @@ const EditarServico = () => {
     const [duracao, setDuracao] = useState<string>("");
     const [id, setId] = useState<number>();
 
+    const [nomeErro, setNomeErro] = useState<string>("");
+  const [precoErro, setprecoErro] = useState<string>("");
+  const [descricaoErro, setdescricaoErro] = useState<string>("");
+  const [duracaoErro, setduracaoErro] = useState<string>("");
 
     const parametro = useParams();
 
     const atualizar = (e: FormEvent) => {
+        setNomeErro("")
+    setprecoErro("")
+    setduracaoErro("")
+    setdescricaoErro("")
         e.preventDefault();
 
         const dados = {
@@ -37,7 +45,35 @@ const EditarServico = () => {
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/ListagemServico";
+                if (response.data.success == false) {
+
+
+                    // nome
+                    if ('nome' in response.data.error) {
+                      setNomeErro(response.data.error.nome[0])
+                    }
+          
+          
+                    //email
+                    if ('descricao' in response.data.error) {
+                      setdescricaoErro(response.data.error.descricao[0])
+                    }
+          
+          
+          
+                    //cpf
+                    if ('duracao' in response.data.error) {
+                      setduracaoErro(response.data.error.duracao[0])
+                    }
+          
+                    //BAIRRO
+                    if ('preco' in response.data.error) {
+                      setprecoErro(response.data.error.preco[0])
+                    }
+          
+          
+                  } else {
+                window.location.href = "/ListagemServico";}
             }).catch(function (error) {
                 console.log('Ocorreu um erro ao atualizar');
             });
@@ -100,7 +136,9 @@ return (
                 <div className="col-6" >
                 <label htmlFor="nome" className='form-label'>Nome</label>
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} value={nome} />
-                </div>
+                                    <div
+                    className='text-danger'>{nomeErro}
+                  </div></div>
                 <div className="col-6">
                 <label htmlFor="preco" className="form-label">
                                         Preço
@@ -111,7 +149,9 @@ return (
                                         className="form-control"
                                         required
                                         onChange={handleState} value={preco}
-                                    />
+                                    /><div
+                                    className='text-danger'>{precoErro}
+                                  </div>
                 </div>
                 <div className="col-6">
                 <label htmlFor="descricao" className="form-label">
@@ -123,7 +163,9 @@ return (
                                         className="form-control"
                                         required
                                         onChange={handleState} value={descricao}
-                                    />
+                                    /><div
+                                    className='text-danger'>{descricaoErro}
+                                  </div>
                 </div>
                 <div className="col-6">
                 <label htmlFor="duracao" className="form-label">
@@ -135,7 +177,9 @@ return (
                                         className="form-control"
                                         required
                                         onChange={handleState} value={duracao}
-                                    />
+                                    /><div
+                                    className='text-danger'>{duracaoErro}
+                                  </div>
                 </div>
 
                 <div className="col-12">
