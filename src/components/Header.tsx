@@ -19,7 +19,7 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="conteudoNavbar">
                             <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a href="#" className="nav-link active">Início</a>
+                                    <a href="../paginaInicial/JoestarPaginaInicial/index.html" className="nav-link active">Início</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="/CadastroDeClientes" className="nav-link active">Cadastrar Clientes✩</a>
@@ -36,7 +36,24 @@ const Header = () => {
                                     <a href="/CadastroServico" className="nav-link active">Cadastrar serviços</a>
                                 </li>
 
-                                
+                                <li className="nav-item">
+                                    <a href="/ListagemServico" className="nav-link active">Listagem serviços</a>
+                                </li>
+
+                                <li className="nav-item">
+                                    <a href="/ListagemAgenda" className="nav-link active">Listagem de horario disponiveis</a>
+                                </li>
+
+
+                                <li className="nav-item">
+                                    <a href="/Listagem" className="nav-link active">Listagem de clientes cadastrados</a>
+                                </li>
+
+
+
+                                <li className="nav-item">
+                                    <a href="/ListagemProficional" className="nav-link active">Listagem de Profissionais cadastrados</a>
+                                </li>
 
 
                             </ul>
