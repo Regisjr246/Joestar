@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect} from 're
 
 import styles from '../template.module.css';
 import Header from './Header';
-
+import Footer from "./Footer";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
@@ -73,7 +73,7 @@ const EditarAgenda = () => {
                 <div className='container'>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Atualizar agenda</h5>
+                            <h5 className='card-title'>Editar horario disponiveis</h5>
                             <form onSubmit={atualizarAgenda} className='row g-3'>
                              
 
@@ -102,7 +102,7 @@ const EditarAgenda = () => {
                     </div>
                 </div>
             </main>
-            
+            <Footer />
             </div>
     )
 

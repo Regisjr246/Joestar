@@ -114,7 +114,7 @@ const CadastroAgenda = () => {
 
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar </h5>
+                            <h5 className='card-title'>Cadastrar horario disponiveis </h5>
                             <form onSubmit={cadastrarAgenda} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Profcional_Id</label>

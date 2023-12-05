@@ -123,10 +123,8 @@ const EditarServico = () => {
 
 return (
     <div>
-
-
+<Header />
                 
-
       <main className={styles.main}>
         <div className="container">
           <div className="card">
@@ -192,6 +190,7 @@ return (
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
