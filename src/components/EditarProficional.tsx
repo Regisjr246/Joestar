@@ -22,7 +22,7 @@ const EditarProfissional = () => {
     const [cpf, setCpf] = useState<string>("");
     const [id, setId] = useState<number>();
     const [dataNascimento, setDataNascimento] = useState<string>("")
-    const [localidade, setLocalidade] = useState<string>("");
+    const [cidade, setCidade] = useState<string>("");
     const [estado, setEstado] = useState<string>("");
     const [pais, setPais] = useState<string>("");
     const [rua, setRua] = useState<string>("");
@@ -83,7 +83,7 @@ const EditarProfissional = () => {
             dataNascimento: dataNascimento,
             cep: cep,
             complemento: complemento,
-            cidade: localidade,
+            cidade: cidade,
             estado: estado,
             pais: pais,
             rua: rua,
@@ -205,7 +205,7 @@ const EditarProfissional = () => {
                 data => {
                     console.log(data);
 
-                    setLocalidade(data.localidade);
+                    setCidade(data.localidade);
                     // setCep(data.cep);
                     setEstado(data.uf);
                 }
@@ -224,7 +224,7 @@ const EditarProfissional = () => {
                 setDataNascimento(response.data.data.dataNascimento);
                 setCep(response.data.data.cep);
                 setComplemento(response.data.data.complemento);
-                setLocalidade(response.data.data.cidade);
+                setCidade(response.data.data.cidade);
                 setEstado(response.data.data.estado);
                 setPais(response.data.data.pais);
                 setRua(response.data.data.rua);
@@ -267,7 +267,7 @@ const EditarProfissional = () => {
             setCelular(e.target.value);
         }
         if (e.target.name == "cidade") {
-            setLocalidade(e.target.value);
+            setCidade(e.target.value);
         }
         if (e.target.name == "estado") {
             setEstado(e.target.value);
@@ -360,7 +360,7 @@ const EditarProfissional = () => {
 
                                     <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Cep</label>
-                                <input type="text" name='cep' className='form-control' required onBlur={findCep} onChange={handleState}  placeholder='Só  numeros'/>
+                                <input type="text" name='cep' className='form-control' required onBlur={findCep} onChange={handleState}  placeholder='Só  numeros' value={cep}/>
                                 <div
                                         className='text-danger'>{cepErro}
                                     </div>
@@ -374,7 +374,7 @@ const EditarProfissional = () => {
 
                                 <div className='col-4'>
                                 <label htmlFor="cidade" className='form-label'>Cidade</label>
-                                    <input type="text" name='cidade' className='form-control' required onChange={handleState} value={localidade} /><div
+                                    <input type="text" name='cidade' className='form-control' required onChange={handleState} value={cidade} /><div
                                         className='text-danger'>{localidadeErro}
                                     </div>
                                 </div>

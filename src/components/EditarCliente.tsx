@@ -14,7 +14,7 @@ const EditarClientes = () => {
     const [cpf, setCpf] = useState<string>("");
     const [id, setId] = useState<number>();
     const [dataNascimento, setDataNascimento] = useState<string>("")
-    const [cidade, setCidade] = useState<string>("");
+    const [localidade, setLocalidade] = useState<string>("");
     const [estado, setEstado] = useState<string>("");
     const [pais, setPais] = useState<string>("");
     const [rua, setRua] = useState<string>("");
@@ -79,7 +79,7 @@ const EditarClientes = () => {
             dataNascimento:dataNascimento,
             cep: cep,
             complemento: complemento,
-            cidade: cidade,
+            cidade: localidade,
             estado: estado,
             pais: pais,
             rua: rua,
@@ -190,7 +190,35 @@ const EditarClientes = () => {
 
     }
 
+    const findCep = (e: FormEvent) => {
+        e.preventDefault();
 
+        fetch('https://viacep.com.br/ws/' + cep + '/json/',
+            {
+                method: 'GET'
+            }
+        ).then(response => response.json())
+            .then(
+                data => {
+                    console.log(data);
+
+                    setLocalidade(data.localidade);
+            
+                    //setPais(data.pais);
+
+                    setEstado(data.uf);
+
+
+                }
+            )
+            const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
+                if (e.target.name = "cep") {
+                    setCep(e.target.value);
+                }
+        
+            }
+
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -202,7 +230,7 @@ const EditarClientes = () => {
                 setDataNascimento(response.data.data.dataNascimento);
                 setCep(response.data.data.cep);
                 setComplemento(response.data.data.complemento);
-                setCidade(response.data.data.cidade);
+                setLocalidade(response.data.data.cidade);
                 setEstado(response.data.data.estado);
                 setPais(response.data.data.pais);
                 setRua(response.data.data.rua);
@@ -244,7 +272,7 @@ const EditarClientes = () => {
             setCelular(e.target.value);
         } 
         if (e.target.name == "cidade") {
-            setCidade(e.target.value);
+            setLocalidade(e.target.value);
         }
         if (e.target.name == "estado") {
             setEstado(e.target.value);
@@ -308,7 +336,7 @@ const EditarClientes = () => {
                     
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar Clientes</h5>
+                            <h5 className='card-title'>Editar Clientes</h5>
                             <form onSubmit={atualizar} className='row g-3'>
                                 <div className='col-6'>
                                 <label htmlFor="nome" className='form-label'>Nome</label>
@@ -336,10 +364,9 @@ const EditarClientes = () => {
                                         className='text-danger'>{dataNascimentoErro}
                                     </div>  </div>
 
-
-                                <div className='col-4'>
-                                <label htmlFor="cep" className='form-label'>CEP</label>
-                                    <input type="text" name='cep' className='form-control' required onChange={handleState} value={cep} />
+                                    <div className='col-4'>
+                                    <label htmlFor="cep" className='form-label'>Cep</label>
+                                    <input type="text" name='cep' className='form-control' required onBlur={findCep} onChange={handleState} placeholder='Só  numeros' value={cep} />
                                     <div
                                         className='text-danger'>{cepErro}
                                     </div>
@@ -354,7 +381,7 @@ const EditarClientes = () => {
 
                                 <div className='col-4'>
                                 <label htmlFor="cidade" className='form-label'>Cidade</label>
-                                    <input type="text" name='cidade' className='form-control' required onChange={handleState} value={cidade} />
+                                    <input type="text" name='cidade' className='form-control' required onChange={handleState} value={localidade} />
                                     <div
                                         className='text-danger'>{localidadeErro}
                                     </div>
