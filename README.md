@@ -62,7 +62,7 @@ code.
 
 6.Rodar o projeto
 ```
-code.
+npm start
 ```
 
 ```
