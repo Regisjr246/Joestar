@@ -16,7 +16,7 @@ import RedefinirSenhaClientes from "../components/RedefinirSenhaClientes";
 import CadastroAgenda   from "../components/CadastroAgenda";
 import EditarProfissional from "../components/EditarProficional";
 import EditarAgenda from "../components/EditarAgenda";
-euuuuu
+
 const AppRoute = () => {
     return (
         <BrowserRouter>
