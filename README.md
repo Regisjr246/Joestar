@@ -58,12 +58,11 @@ npm install
 5. Acessar o Visual Studio Code
 ```
 code.
-
+```
 
 6.Rodar o projeto
 ```
 npm start
-```
 
 ```
 # Insomnia 
