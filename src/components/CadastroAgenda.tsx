@@ -49,39 +49,33 @@ const CadastroAgenda = () => {
         const dados = {
             profissional_id: profissional_id,
             dataHora: dataHora,
-
-
         }
-
-        axios.post('http://127.0.0.1:8000/api/cadastroAgenda',
-            dados,
-            {
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                }
-            }
-        ).then(function (response) {
+        if (new Date(dataHora) < new Date()) {
+            setDataHoraErro("Não é possível cadastrar antes da data e hora atual");
+            return;
+          }
 
 
-
-
-
-
-            
-            alert('cadastro Agenda realizado com sucesso')
-
-
-             window.location.href = "/ListagemAgenda"
-        }).catch(function (error) {
-            console.log(error)
+          axios
+          .post("http://127.0.0.1:8000/api/cadastroAgenda", dados, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          })
+          .then(function (response) {
+            alert("Cadastro de Agenda realizado com sucesso");
+            window.location.href = "/ListagemAgenda";
+          })
+          .catch(function (error) {
+            console.log(error);
             Swal.fire({
-                title: "Erro no Cadastro",
-                text: "Agenda não cadastrado ",
-                icon: "error"
+              title: "Erro no Cadastro",
+              text: "Agenda não cadastrada",
+              icon: "error",
             });
-        });
-    }
+          });
+      };
 
     useEffect(() => {
         async function fetchData() {
@@ -133,7 +127,7 @@ const CadastroAgenda = () => {
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="email" className='form-label' >Data e hora</label>
-                                    <input type="datetime-local" name='dataHora' className='form-control' required onChange={handleState} />
+                                    <input type="datetime-local" name='dataHora' className='form-control' required onChange={handleState}    /> 
                                <div
                                         className='text-danger'>{dataHoraErro}
                                     </div>
