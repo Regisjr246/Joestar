@@ -13,30 +13,15 @@ import { Interface } from 'readline';
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-
-
 const CadastroAgenda = () => {
 
     const [profissional_id, setPrficional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
     const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
-
-
-
-
-
     const [profissional_idErro, setprofissional_idErro] = useState<string>("")
     const [dataHoraErro, setDataHoraErro] = useState<string>("")
     const [profissioanlErro, setProfissioanlErro] = useState<string>("")
    
-
-
-
-
-
-
-    
 
     const cadastrarAgenda = (e: FormEvent) => {
         setprofissional_idErro("")
