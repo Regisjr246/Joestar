@@ -21,10 +21,22 @@ const CadastroAgenda = () => {
     const [profissional_id, setPrficional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
     const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
+
+
+
+
+
     const [profissional_idErro, setprofissional_idErro] = useState<string>("")
     const [dataHoraErro, setDataHoraErro] = useState<string>("")
     const [profissioanlErro, setProfissioanlErro] = useState<string>("")
    
+
+
+
+
+
+
+    
 
     const cadastrarAgenda = (e: FormEvent) => {
         setprofissional_idErro("")
@@ -108,7 +120,7 @@ const CadastroAgenda = () => {
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Profcional_Id</label>
                                     <select name='profissional_id' id='profissional_id ' className='form-control' required onChange={handleProfissionalSelect}   >
-                                        <option >Selecione um Profissional</option>
+                                        <option value="">Selecione um Profissional</option>
                                         {profissional.map(profissional => (
                                             <option key={profissional.id} value={profissional.id}>
                                                 {profissional.nome}
