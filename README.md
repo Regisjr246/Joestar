@@ -1,6 +1,23 @@
-# JOESTAR com PHP e Laravel
 
-PetLife é um projeto de um pet shop integrado com API e retorno dos dados no formato JSON usando a linguagem PHP e o framework Laravel.
+# Barbearia JoestarR com PHP e Laravel
+
+Bem-vindo à Barbearia Joestar! Somos especializados em cortes de cabelo, barba e serviços de estética masculina. Nosso objetivo é proporcionar a melhor experiência para os nossos clientes, oferecendo serviços de alta qualidade e um atendimento personalizado.
+Funcionalidades
+
+
+
+#Funcionalidades
+#Cadastro de Clientes
+-Cadastre novos clientes e mantenha um registro completo com informações de contato, preferências e histórico de serviços.
+#Cadastro de Profissionais
+-Registre os profissionais da barbearia, incluindo nome, especialidades e horários de atendimento.
+#Cadastro de Serviços
+-Adicione e gerencie os serviços oferecidos pela barbearia, incluindo cortes de cabelo, barba, estética facial, entre outros.
+#Agendamento
+Agende os serviços para os clientes, selecionando o profissional, o serviço desejado e o horário disponível.
+#Listagens
+-Visualize e gerencie listas de clientes, profissionais, serviços e agendamentos.
+Edite ou exclua informações conforme necessário.
 
 ## Requisitos
 
