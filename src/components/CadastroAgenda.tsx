@@ -21,22 +21,10 @@ const CadastroAgenda = () => {
     const [profissional_id, setPrficional_id] = useState<string>("");
     const [dataHora, setDataHora] = useState<string>("");
     const [profissional, setProfissional] = useState<CadastroInterfaceProficional[]>([]);
-
-
-
-
-
     const [profissional_idErro, setprofissional_idErro] = useState<string>("")
     const [dataHoraErro, setDataHoraErro] = useState<string>("")
     const [profissioanlErro, setProfissioanlErro] = useState<string>("")
    
-
-
-
-
-
-
-    
 
     const cadastrarAgenda = (e: FormEvent) => {
         setprofissional_idErro("")
@@ -56,26 +44,29 @@ const CadastroAgenda = () => {
           }
 
 
-          axios
-          .post("http://127.0.0.1:8000/api/cadastroAgenda", dados, {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          })
-          .then(function (response) {
-            alert("Cadastro de Agenda realizado com sucesso");
-            window.location.href = "/ListagemAgenda";
-          })
-          .catch(function (error) {
-            console.log(error);
+        axios.post('http://127.0.0.1:8000/api/cadastroAgenda',
+            dados,
+            {
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            }
+        ).then(function (response) {
+            
+            alert('cadastro Agenda realizado com sucesso')
+
+
+             window.location.href = "/ListagemAgenda"
+        }).catch(function (error) {
+            console.log(error)
             Swal.fire({
-              title: "Erro no Cadastro",
-              text: "Agenda não cadastrada",
-              icon: "error",
+                title: "Erro no Cadastro",
+                text: "Agenda não cadastrado ",
+                icon: "error"
             });
-          });
-      };
+        });
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -117,7 +108,7 @@ const CadastroAgenda = () => {
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Profcional_Id</label>
                                     <select name='profissional_id' id='profissional_id ' className='form-control' required onChange={handleProfissionalSelect}   >
-                                        <option value="0">Selecione um Profissional</option>
+                                        <option >Selecione um Profissional</option>
                                         {profissional.map(profissional => (
                                             <option key={profissional.id} value={profissional.id}>
                                                 {profissional.nome}
