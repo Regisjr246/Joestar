@@ -7,15 +7,15 @@ Funcionalidades
 
 
 # Funcionalidades
-# Cadastro de Clientes
+# Cadastro de Clientes:
 -Cadastre novos clientes e mantenha um registro completo com informações de contato, preferências e histórico de serviços.
-# Cadastro de Profissionais
+# Cadastro de Profissionais:
 -Registre os profissionais da barbearia, incluindo nome, especialidades e horários de atendimento.
-# Cadastro de Serviços
+# Cadastro de Serviços:
 -Adicione e gerencie os serviços oferecidos pela barbearia, incluindo cortes de cabelo, barba, estética facial, entre outros.
-# Agendamento
+# Agendamento:
 Agende os serviços para os clientes, selecionando o profissional, o serviço desejado e o horário disponível.
-# Listagens
+# Listagens:
 -Visualize e gerencie listas de clientes, profissionais, serviços e agendamentos.
 Edite ou exclua informações conforme necessário.
 
