@@ -203,6 +203,7 @@ const CadastroCliente = () => {
 
 
     const findCep = (e: FormEvent) => {
+
         e.preventDefault();
 
         fetch('https://viacep.com.br/ws/' + cep + '/json/',
@@ -215,16 +216,11 @@ const CadastroCliente = () => {
                     console.log(data);
 
                     setLocalidade(data.localidade);
-            
-                    //setPais(data.pais);
-
+                    setBairro(data.bairro)
+                    setRua(data.logradouro)
                     setEstado(data.uf);
-
-
                 }
-            )
-
-
+            ).catch(error => {setCepErro("Pesquisa invalida")});
     }
     const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name = "cep") {
@@ -322,14 +318,13 @@ const CadastroCliente = () => {
                                     </div> 
                                 </div>
 
-
                                 <div className='col-4'>
-                                    <label htmlFor="cep" className='form-label'>Cep</label>
-                                    <input type="text" name='cep' className='form-control' required onBlur={findCep} onChange={handleState} placeholder='Só  numeros' />
-                                    <div
+                                <label htmlFor="celular" className='form-label'>Cep</label>
+                                <input type="text" name='cep' className='form-control' required onBlur={findCep} onChange={handleState}  placeholder='Só  numeros'/>
+                                <div
                                         className='text-danger'>{cepErro}
                                     </div>
-                                </div>
+                            </div>
                                 <div className='col-4'>
                                     <label htmlFor="estado" className='form-label'>Estado</label>
                                     <input type="text" name='estado' value={estado} className='form-control' required onChange={handleState} placeholder='ex:SP' />
@@ -354,14 +349,14 @@ const CadastroCliente = () => {
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="celular" className='form-label'>Pais</label>
-                                    <input type="text" value={pais} name='pais' id='pais' className='form-control' required onChange={handleState} placeholder='ex: Brasil' />
+                                    <input type="text" value={pais} name='pais' id='pais' className='form-control' required onChange={handleState} placeholder='ex: Brasil'      />
                                     <div
                                         className='text-danger'>{paisErro}
                                     </div>
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="rua" className='form-label'>Rua</label>
-                                    <input type="text" name='rua' className='form-control' required onChange={handleState} placeholder='ex: Joao dragon' />
+                                    <input type="text" name='rua' className='form-control' required onChange={handleState} placeholder='ex: Joao dragon' value={rua} />
                                     <div
                                         className='text-danger'>{ruaErro}
                                     </div>
@@ -375,7 +370,7 @@ const CadastroCliente = () => {
                                 </div>
                                 <div className='col-4'>
                                     <label htmlFor="bairro" className='form-label'>Bairro</label>
-                                    <input type="text" name='bairro' className='form-control' required onChange={handleState} placeholder='ex: renascer' />
+                                    <input type="text" name='bairro' className='form-control' required onChange={handleState} placeholder='ex: renascer'  value={bairro}/>
                                     <div
                                         className='text-danger'>{bairroErro}
                                     </div>

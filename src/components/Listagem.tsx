@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterface } from '../Interfaces/CadastroClienteInterface';
+import Footer from './Footer';
+import Header from './Header';
 
 
 const Listagem = () => {
@@ -112,6 +114,7 @@ const Listagem = () => {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -182,7 +185,7 @@ const Listagem = () => {
                     </div>
                 </div>
             </main>
-
+            <Footer />
         </div>
     );
 }

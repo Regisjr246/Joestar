@@ -63,7 +63,8 @@ const CadastroProficional = () => {
                     console.log(data);
 
                     setlocalidade(data.localidade);
-                    // setCep(data.cep);
+                    setBairro(data.bairro)
+                    setRua(data.logradouro)
                     setEstado(data.uf);
                 }
             ).catch(error => {setCepErro("Pesquisa invalida")});
@@ -333,14 +334,14 @@ const CadastroProficional = () => {
                             </div>
                             <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Pais</label>
-                                <input type="text" name='pais' className='form-control' required onChange={handleState} placeholder='ex: Brasil'/>
+                                <input type="text" name='pais' className='form-control' required onChange={handleState} placeholder='ex: Brasil' />
                                 <div
                                         className='text-danger'>{paisErro}
                                     </div>
                             </div>
                             <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Rua</label>
-                                <input type="text" name='rua' className='form-control' required onChange={handleState} placeholder='ex: paulo dragon'/>
+                                <input type="text" name='rua' className='form-control' required onChange={handleState} placeholder='ex: paulo dragon' value={rua}/>
                                 <div
                                         className='text-danger'>{ruaErro}
                                     </div>
@@ -354,7 +355,7 @@ const CadastroProficional = () => {
                             </div>
                             <div className='col-4'>
                                 <label htmlFor="celular" className='form-label'>Bairro</label>
-                                <input type="text" name='bairro' className='form-control' required onChange={handleState} placeholder='ex: almirante'/>
+                                <input type="text" name='bairro' className='form-control' required onChange={handleState} placeholder='ex: almirante' value={bairro}/>
                                 <div
                                         className='text-danger'>{bairroErro}
                                     </div>

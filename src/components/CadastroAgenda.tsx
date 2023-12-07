@@ -27,7 +27,7 @@ const CadastroAgenda = () => {
 
 
     const [profissional_idErro, setprofissional_idErro] = useState<string>("")
-    const [dataHoraErro, setdataHora] = useState<string>("")
+    const [dataHoraErro, setDataHoraErro] = useState<string>("")
     const [profissioanlErro, setProfissioanlErro] = useState<string>("")
    
 
@@ -39,6 +39,10 @@ const CadastroAgenda = () => {
     
 
     const cadastrarAgenda = (e: FormEvent) => {
+        setprofissional_idErro("")
+        setDataHoraErro("")
+        setProfissioanlErro("")
+
         e.preventDefault();
 
 
@@ -130,6 +134,10 @@ const CadastroAgenda = () => {
                                 <div className='col-6'>
                                     <label htmlFor="email" className='form-label' >Data e hora</label>
                                     <input type="datetime-local" name='dataHora' className='form-control' required onChange={handleState} />
+                               <div
+                                        className='text-danger'>{dataHoraErro}
+                                    </div>
+
                                 </div>
 
                                 <div className='col-12'>

@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterfaceAgenda } from '../Interfaces/CadastroInterfaceAgenda';
 import { Link } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 
 const ListagemAgenda = () => {
@@ -96,6 +98,7 @@ function handleDelete(id: number) {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -158,6 +161,7 @@ function handleDelete(id: number) {
                     </div>
                 </div>
             </main>
+            <Footer />
 
         </div>
     );

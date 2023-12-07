@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import styles from "../App.module.css";
 import { CadastroInterfaceServico } from '../Interfaces/CadastroServicos';
 import { Link } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 
 const ListagemServico = () => {
@@ -105,6 +107,7 @@ function handleDelete(id: number) {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -171,7 +174,7 @@ function handleDelete(id: number) {
                     </div>
                 </div>
             </main>
-
+            <Footer />
         </div>
     );
 }
